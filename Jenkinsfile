@@ -1,28 +1,24 @@
-
-    pipeline {
+pipeline {
     agent {
         docker {
-            image'cypress/browsers:latest'
-             //cypress/browsers:24.11.1'
-            //cypress/browsers:latest
-            //image 'cypress/browsers:node-24.11.1-chrome-142.0.7444.162-1-ff-145.0-edge-142.0.3595.65-1'
-            args   '--entrypoint='
+            image 'cypress/included:13.6.6'
+            args '--entrypoint='
         }
     }
-
     stages {
         stage('Install dependencies') {
             steps {
+                sh 'node --version'
                 sh 'npm cache clean --force'
-                sh 'npx cypress cache --clear'
-                sh 'npm i'
-
+                //sh 'npx cypress cache clear'
+                sh 'npm --version'
+                sh 'npm install'
+                
             }
         }
-
-        stage('Run tests') {
+        stage('Run Cypress tests') {
             steps {
-                sh '.cypress/e2e/batchs/login_only.sh'
+                sh 'npx cypress run --spec="cypress/e2e/login.cy.js"'
             }
         }
     }
