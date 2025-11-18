@@ -15,7 +15,7 @@
 
         stage('Run tests') {
             steps {
-                sh '.cypress/e2ebatchs/login_only.sh'
+                sh '.cypress/e2e/batchs/login_only.sh'
             }
         }
     }
