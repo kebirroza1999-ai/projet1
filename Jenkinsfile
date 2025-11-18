@@ -13,7 +13,7 @@ pipeline {
                 //sh 'npx cypress cache clear'
                 sh 'npm --version'
                 sh 'npm install'
-                
+ 
             }
         }
         stage('Run Cypress tests') {
@@ -22,4 +22,10 @@ pipeline {
             }
         }
     }
+     post {
+        always {
+            junit 'resuls/*.xml'
+            }
+        }
+      
 }

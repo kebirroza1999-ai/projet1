@@ -2,10 +2,10 @@ const { defineConfig } = require("cypress");
 import { allureCypress } from "allure-cypress/reporter";
 
 module.exports = defineConfig({
- // reporter: 'junit',
-  //reporterOptions: {
-   // mochaFile: 'results/my-test-output.xml',
-    //toConsole: true,},
+  reporter: 'junit',
+  reporterOptions: {
+   mochaFile: 'results/my-test-output.xml',
+    toConsole: true,},
  // reporter: 'cypress-mochawesome-reporter',//pour mocha
   
   e2e: {
@@ -16,9 +16,9 @@ module.exports = defineConfig({
 
 
     setupNodeEvents(on, config) {
-       allureCypress(on, config, {
-        resultsDir: "allure-results",
-      });
+       //allureCypress(on, config, {
+        //resultsDir: "allure-results",
+      //});
       //import
        //require('cypress-mochawesome-reporter/plugin')(on);
        const { plugin: cypressGrepPlugin } = require('@cypress/grep/plugin')
