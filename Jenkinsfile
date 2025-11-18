@@ -21,11 +21,11 @@ pipeline {
                 sh 'npx cypress run --spec="cypress/e2e/login.cy.js"'
             }
         }
-    }
-     post {
-        always {
-            junit 'resuls/*.xml'
+        stage('rapport')
+            steps{
+                junit 'results/*.xml'
             }
-        }
+    }
+     
       
 }
